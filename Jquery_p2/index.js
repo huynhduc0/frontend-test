@@ -1,4 +1,17 @@
-var todo = localStorage.getItem('list')?JSON.parse(localStorage.getItem('list')):[];
+var todo = localStorage.getItem('list')?JSON.parse(localStorage.getItem('list')):[
+    {
+        "name":"eat",
+        "done":true
+    },
+    {
+        "name":"stop drinking voka",
+        "done":false
+    },
+    {
+        "name":"гордая родина",
+        "done":true
+    }
+];
 console.log(todo);
 renderList();   
 function addToList(name){
@@ -12,8 +25,8 @@ function addToList(name){
     }
 }
 function removeAll(){
-    localStorage.clear();
     todo = []
+    localStorage.setItem('list',JSON.stringify(todo));
     renderList();
 }
 function removeItem(id){
